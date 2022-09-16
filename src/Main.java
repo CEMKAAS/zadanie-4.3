@@ -7,6 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
         Map<Character, Integer> map = new HashMap<>();
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+        Character maxChar = null;
+        Character minChar = null;
         for (int i = 0; i < name.length(); i++) {
             char aChar = name.charAt(i);
             if (Character.isLetter(aChar)) {
@@ -19,11 +23,20 @@ public class Main {
                 }
             }
         }
-               // map.put(aChar,x);
-        for (Map.Entry<Character, Integer> kv : map.entrySet()){
-            System.out.println(kv.getKey() + " " + kv.getValue());
-
+        // map.put(aChar,x);
+        for (Map.Entry<Character, Integer> kv : map.entrySet()) {
+            int value = kv.getValue();
+            if (max < value) {
+                max = value;
+                maxChar = kv.getKey();
+            }
+            if (min > value) {
+                min = value;
+                minChar = kv.getKey();
+            }
+            //System.out.println(kv.getKey() + "  " + kv.getValue());
         }
-        }
-        //System.out.println(map.values());
+        System.out.println(maxChar + " " + max);
+        System.out.println(minChar + " " + min);
     }
+}
